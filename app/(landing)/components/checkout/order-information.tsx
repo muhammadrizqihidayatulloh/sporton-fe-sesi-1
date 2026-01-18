@@ -26,7 +26,7 @@ const OrderInformation = ({formData, setFormData}: TOrderInformation) => {
                 </div>
                 <div className="input-group">
                     <label htmlFor="customerAdress">Shipping Adress</label>
-                <textarea placeholder="Type your full shipping adress" id="customerAdress" name="customerAdress" rows={7} value={formData.customerAddress} onChange={handleInputChange}/>
+                <textarea placeholder="Type your full shipping adress" id="customerAdress" name="customerAddress" rows={7} value={formData.customerAddress} onChange={handleInputChange}/>
                 </div>
             </div>
         </CardWithHeader>

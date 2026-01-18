@@ -1,9 +1,10 @@
 import OrderConfirmed from "../../components/order-status/order-confirmed";
 import OrderSubmitted from "../../components/order-status/order-submitted";
 import { getTrasactionById } from "@/app/services/transaction.service";
-import { TPageProps } from "../../product/[id]/page";
 import OrderRejected from "../../components/order-status/order-rejected";
-
+type TPageProps = {
+    params: Promise<{id: string}>;
+}
 const OrderStatus = async ({params}: TPageProps) => {
     const {id} = await params;
     const transaction = await getTrasactionById(id);
