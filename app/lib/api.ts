@@ -9,14 +9,14 @@ export async function fetchAPI<T>(
         cache: options?.cache || "no-store", //kita set no-store karena kita ingin mendapat data lebih real time atau lebih updated
     })
     if (!res.ok){
-        let errorMassage = `Failed to fecth data from ${endpoint}`;
+        let errorMessage = `Failed to fecth data from ${endpoint}`;
         try {
             const errorData = await res.json();
-            errorMassage = errorData.massage || errorData.error || errorMassage;
+            errorMessage = errorData.message || errorData.error || errorMessage;
         } catch(e){
             console.log(e)
         }
-        throw new Error(errorMassage);
+        throw new Error(errorMessage);
     }
     return res.json();
 }
@@ -24,4 +24,11 @@ export async function fetchAPI<T>(
 export function getImageUrl(path: string){
     if(path.startsWith("http")) return path;
     return `${process.env.NEXT_PUBLIC_API_ROOT}/${path}`;
+}
+
+export function getAuthHeaders(){
+    const token = localStorage.getItem("token");
+    return {
+        Authorization: `Bearer ${token}`, 
+    };
 }
